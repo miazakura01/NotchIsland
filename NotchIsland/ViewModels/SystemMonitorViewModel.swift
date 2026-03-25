@@ -1,11 +1,15 @@
 import Foundation
 import IOKit.ps
-import Combine
 
 class SystemMonitorViewModel: ObservableObject {
     @Published var stats = SystemStats()
 
     private var pollTimer: Timer?
+
+    // CPU差分計算用
+    private var prevUser: Int32 = 0
+    private var prevSystem: Int32 = 0
+    private var prevIdle: Int32 = 0
 
     func startMonitoring() {
         updateStats()
@@ -35,17 +39,14 @@ class SystemMonitorViewModel: ObservableObject {
         let powerSource = description[kIOPSPowerSourceStateKey] as? String
         let timeRemaining = description[kIOPSTimeToEmptyKey] as? Int
 
-        // AC電源接続中 or 充電中
         let isOnPower = isCharging || powerSource == kIOPSACPowerValue
 
         stats.batteryLevel = Int(Double(capacity) / Double(maxCapacity) * 100)
         stats.isCharging = isOnPower
         stats.batteryTimeRemaining = timeRemaining
-
-        print("[Battery] level: \(stats.batteryLevel)%, charging: \(isCharging), powerSource: \(powerSource ?? "nil"), isOnPower: \(isOnPower)")
     }
 
-    // MARK: - CPU
+    // MARK: - CPU (差分計算)
 
     private func updateCPU() {
         var numCPU: natural_t = 0
@@ -73,12 +74,20 @@ class SystemMonitorViewModel: ObservableObject {
             totalIdle += cpuInfo[offset + Int(CPU_STATE_IDLE)]
         }
 
-        let total = Double(totalUser + totalSystem + totalIdle)
-        if total > 0 {
-            stats.cpuUsage = Double(totalUser + totalSystem) / total * 100
+        // 前回との差分でCPU使用率を計算
+        let deltaUser = totalUser - prevUser
+        let deltaSystem = totalSystem - prevSystem
+        let deltaIdle = totalIdle - prevIdle
+        let deltaTotal = Double(deltaUser + deltaSystem + deltaIdle)
+
+        if deltaTotal > 0 && prevUser > 0 {
+            stats.cpuUsage = Double(deltaUser + deltaSystem) / deltaTotal * 100
         }
 
-        // メモリ解放
+        prevUser = totalUser
+        prevSystem = totalSystem
+        prevIdle = totalIdle
+
         let size = Int(numCPUInfo) * MemoryLayout<integer_t>.size
         vm_deallocate(mach_task_self_, vm_address_t(bitPattern: cpuInfo), vm_size_t(size))
     }
@@ -103,7 +112,6 @@ class SystemMonitorViewModel: ObservableObject {
         let compressed = Double(stats.compressor_page_count) * pageSize
 
         let used = (active + wired + compressed) / (1024 * 1024 * 1024)
-
         let totalMemory = Double(ProcessInfo.processInfo.physicalMemory) / (1024 * 1024 * 1024)
 
         self.stats.memoryUsedGB = used

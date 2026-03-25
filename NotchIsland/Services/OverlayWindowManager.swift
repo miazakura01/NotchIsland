@@ -357,8 +357,10 @@ class OverlayWindowManager: ObservableObject {
         }
     }
 
+    private var settingsObserver: Any?
+
     private func observeSettings() {
-        NotificationCenter.default.addObserver(
+        settingsObserver = NotificationCenter.default.addObserver(
             forName: UserDefaults.didChangeNotification,
             object: nil,
             queue: .main
@@ -419,6 +421,9 @@ class OverlayWindowManager: ObservableObject {
             NSEvent.removeMonitor(monitor)
         }
         if let observer = screenObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        if let observer = settingsObserver {
             NotificationCenter.default.removeObserver(observer)
         }
         hideTimer?.invalidate()

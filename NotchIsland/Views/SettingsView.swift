@@ -15,7 +15,7 @@ struct SettingsView: View {
             displaySettings
                 .tabItem { Label("表示", systemImage: "display") }
         }
-        .frame(width: 400, height: 320)
+        .frame(minWidth: 420, minHeight: 380)
     }
 
     // MARK: - General

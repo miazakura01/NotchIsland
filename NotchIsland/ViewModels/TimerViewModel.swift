@@ -1,12 +1,15 @@
 import Foundation
 import UserNotifications
-import Combine
 
 class TimerViewModel: ObservableObject {
     @Published var state = TimerState()
     @Published var hasActiveTimer = false
 
     private var timer: Timer?
+    private var timerStartDate: Date?
+    private var timerStartRemaining: TimeInterval = 0
+    private var stopwatchStartDate: Date?
+    private var stopwatchAccumulated: TimeInterval = 0
 
     // MARK: - Timer
 
@@ -21,11 +24,17 @@ class TimerViewModel: ObservableObject {
         state.isRunning = true
         hasActiveTimer = true
 
+        timerStartDate = Date()
+        timerStartRemaining = state.timerRemaining
+
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            if self.state.timerRemaining > 0 {
-                self.state.timerRemaining -= 0.1
+            guard let self = self, let startDate = self.timerStartDate else { return }
+            let elapsed = Date().timeIntervalSince(startDate)
+            let remaining = self.timerStartRemaining - elapsed
+
+            if remaining > 0 {
+                self.state.timerRemaining = remaining
             } else {
                 self.state.timerRemaining = 0
                 self.timerFinished()
@@ -45,9 +54,12 @@ class TimerViewModel: ObservableObject {
         state.isRunning = true
         hasActiveTimer = true
 
+        stopwatchStartDate = Date()
+
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            self?.state.stopwatchElapsed += 0.1
+            guard let self = self, let startDate = self.stopwatchStartDate else { return }
+            self.state.stopwatchElapsed = self.stopwatchAccumulated + Date().timeIntervalSince(startDate)
         }
     }
 
@@ -62,6 +74,13 @@ class TimerViewModel: ObservableObject {
         timer?.invalidate()
         timer = nil
         state.isRunning = false
+
+        // ストップウォッチの累積時間を保存
+        if state.mode == .stopwatch {
+            stopwatchAccumulated = state.stopwatchElapsed
+            stopwatchStartDate = nil
+        }
+        timerStartDate = nil
     }
 
     func resetTimer() {
@@ -70,8 +89,10 @@ class TimerViewModel: ObservableObject {
         switch state.mode {
         case .timer:
             state.timerRemaining = state.timerDuration
+            timerStartRemaining = 0
         case .stopwatch:
             state.stopwatchElapsed = 0
+            stopwatchAccumulated = 0
             state.laps.removeAll()
         }
     }

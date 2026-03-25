@@ -23,19 +23,22 @@ class NotificationViewModel: ObservableObject {
         // NSDistributedNotificationCenter でシステム通知を監視
         let distributedCenter = DistributedNotificationCenter.default()
 
-        let observer = distributedCenter.addObserver(
-            forName: nil,
-            object: nil,
-            queue: .main
-        ) { [weak self] notification in
-            // UserNotification系の通知をフィルタ
-            let name = notification.name.rawValue
-            if name.contains("com.apple.notificationcenter") ||
-               name.contains("UserNotification") {
+        // 特定の通知名のみ監視
+        let notificationNames = [
+            "com.apple.notificationcenterui.notification",
+            "com.apple.notificationcenterui.UserNotificationDidActivate"
+        ]
+
+        for name in notificationNames {
+            let observer = distributedCenter.addObserver(
+                forName: NSNotification.Name(name),
+                object: nil,
+                queue: .main
+            ) { [weak self] notification in
                 self?.handleSystemNotification(notification)
             }
+            observers.append(observer)
         }
-        observers.append(observer)
     }
 
     private func handleSystemNotification(_ notification: Notification) {

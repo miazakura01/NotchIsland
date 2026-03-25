@@ -82,7 +82,8 @@ class WindowTilingService {
             return
         }
 
-        let windowElement = window as! AXUIElement
+        // CFTypeRef -> AXUIElement 安全キャスト
+        let windowElement = window as! AXUIElement  // AXUIElementCopyAttributeValueが成功した場合、kAXFocusedWindowAttributeは常にAXUIElement
         let frame = calculateFrame(for: position)
 
         setWindowPosition(windowElement, point: frame.origin)

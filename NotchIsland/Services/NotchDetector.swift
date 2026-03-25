@@ -8,7 +8,8 @@ struct NotchInfo {
 
 class NotchDetector {
     static func detect(for screen: NSScreen? = nil) -> NotchInfo {
-        let targetScreen = screen ?? NSScreen.main ?? NSScreen.screens[0]
+        // NSScreen.screensが空になることは実質ないが安全にfirst
+        let targetScreen = screen ?? NSScreen.main ?? NSScreen.screens.first ?? NSScreen.main!
 
         // macOS 12+ ノッチ付きMacBookの場合、safeAreaInsetsにtopが設定される
         if #available(macOS 12.0, *) {

@@ -48,7 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func statusItemClicked(_ sender: NSStatusBarButton) {
-        let event = NSApp.currentEvent!
+        guard let event = NSApp.currentEvent else {
+            toggleIsland()
+            return
+        }
 
         if event.type == .rightMouseUp {
             showContextMenu()
@@ -80,8 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 .environmentObject(settingsManager)
 
             let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 400, height: 320),
-                styleMask: [.titled, .closable, .miniaturizable],
+                contentRect: NSRect(x: 0, y: 0, width: 450, height: 400),
+                styleMask: [.titled, .closable, .miniaturizable, .resizable],
                 backing: .buffered,
                 defer: false
             )
@@ -154,8 +157,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         weatherVM.startMonitoring()
     }
 
+    private var lastWeatherConfig = ""
+
     @objc private func settingsDidChange() {
-        configureWeather()
+        // 天気設定が変わったときだけ再取得
+        let currentConfig = "\(settingsManager.weatherLocationMode)|\(settingsManager.weatherLatitude)|\(settingsManager.weatherLongitude)|\(settingsManager.weatherLocationName)"
+        if currentConfig != lastWeatherConfig {
+            lastWeatherConfig = currentConfig
+            configureWeather()
+        }
     }
 
     private func setupWindowTiling() {
