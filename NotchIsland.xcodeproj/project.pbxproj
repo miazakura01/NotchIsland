@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F147961454388AE23B70894 /* SystemMonitorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE640AE1B9141D9836D650E /* SystemMonitorViewModel.swift */; };
+		0F4F143F930D7B1634A244DF /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC225B3600EB93EC56B03E9 /* WeatherInfo.swift */; };
+		10D553BDCDD5D33C478F00B3 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA7EDE698DE14D48074BE2 /* NowPlayingView.swift */; };
+		16A2CB5AFE52B2ED1601FB07 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EBEAE26F0C3D12D6F0627 /* NotificationViewModel.swift */; };
+		18A85D3A0DDC7D2F26E03859 /* SystemStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CC8BC9FEBFB5ACE086468F /* SystemStats.swift */; };
+		2922C0F35862BA2C2A9064CC /* CompactViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA3F231040FD8A4BA79817F /* CompactViews.swift */; };
+		2E03D14EA767A5335F695419 /* OverlayWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B862FA43850ECD7F8B6C5 /* OverlayWindowManager.swift */; };
+		3369936F058489444C0A9523 /* AnimationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95B45573039FAA24ACC8A3B /* AnimationConstants.swift */; };
+		3A17D5C54CB1CA1A02DE3D28 /* NotchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4A70D35445FA8E927497 /* NotchDetector.swift */; };
+		41D2555AA60148FA88B613D6 /* IslandContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B71634DF40675C723FA084 /* IslandContainerView.swift */; };
+		5A7A42510E2CD46D949ECC2C /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6B8B5B98C2E5445328E41 /* NowPlayingViewModel.swift */; };
+		622A6F2FCCD529179ABFBC32 /* NowPlayingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35119DEC854D5E7ADE7D7E /* NowPlayingInfo.swift */; };
+		6A7A408B08A0B346E7342CAC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82D2E18CF9FA3522232EEA /* SettingsView.swift */; };
+		70BF0305922FDD879E051094 /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF6DE2439BD27B9402F36D /* TimerState.swift */; };
+		721B546819B1377F77714291 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A8135F68FAA14BA405791 /* WeatherViewModel.swift */; };
+		7BC9082A799F73BE28D7C440 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73164AE85BBA23F8A181E6 /* WeatherView.swift */; };
+		7EAB9BA98B929B6601AF5E55 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E8D340224E536636056277 /* CalendarViewModel.swift */; };
+		8009544C9ACFABEAD6FE1026 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840B610EA1923F1EDACB326 /* NotificationView.swift */; };
+		83CA1EF8FD142753FABE6A05 /* NotchIslandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC08062DE8B9DD5E2B6170 /* NotchIslandApp.swift */; };
+		87A0BA0FB5E63CA2A5B034E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD9CB6061AC2744347AF4A /* AppDelegate.swift */; };
+		928FF66874BA333AE21F48F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE021217E917B9C7786D23A /* Extensions.swift */; };
+		AD0063142C3B17B491E98CDD /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D73AF5235EF483F1D46C8 /* CalendarView.swift */; };
+		B384C67EF6F8FBC7A5B27CE1 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384EDAB920BDD91C84C91F15 /* CalendarEvent.swift */; };
+		BA878B0E22418CAB9D743906 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C63426D80097E4AEB05E2 /* TimerViewModel.swift */; };
+		C23D1DC8AD9D6F4D25037025 /* WindowTilingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C662A09255BF9EE7EB0AD77 /* WindowTilingService.swift */; };
+		D3F0ECB57C1C772F9823D48D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE6D6BAC40C7ED389009361 /* TimerView.swift */; };
+		E54A74F3BC8E0823D77342E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E36DE4C11862E802A328 /* Assets.xcassets */; };
+		E851602AA3D16AE051226779 /* SystemStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEBCE356CCB211EEC592008 /* SystemStatsView.swift */; };
+		F12DCBE97FF1EA8FB72722CF /* アーカイブ.zip in Resources */ = {isa = PBXBuildFile; fileRef = 867F52D2F1D94489E4642829 /* アーカイブ.zip */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02B71634DF40675C723FA084 /* IslandContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandContainerView.swift; sourceTree = "<group>"; };
+		21E6B8B5B98C2E5445328E41 /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
+		2BE021217E917B9C7786D23A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2C662A09255BF9EE7EB0AD77 /* WindowTilingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTilingService.swift; sourceTree = "<group>"; };
+		2D1A8135F68FAA14BA405791 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		2E35119DEC854D5E7ADE7D7E /* NowPlayingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingInfo.swift; sourceTree = "<group>"; };
+		384EDAB920BDD91C84C91F15 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		40BF6DE2439BD27B9402F36D /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
+		4B2C63426D80097E4AEB05E2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		4BA3F231040FD8A4BA79817F /* CompactViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViews.swift; sourceTree = "<group>"; };
+		4DE640AE1B9141D9836D650E /* SystemMonitorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMonitorViewModel.swift; sourceTree = "<group>"; };
+		57CC8BC9FEBFB5ACE086468F /* SystemStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStats.swift; sourceTree = "<group>"; };
+		5D875A49913E51457FDDC1F5 /* NotchIsland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotchIsland.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC225B3600EB93EC56B03E9 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		61E8D340224E536636056277 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		69BC08062DE8B9DD5E2B6170 /* NotchIslandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchIslandApp.swift; sourceTree = "<group>"; };
+		7D73164AE85BBA23F8A181E6 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		867F52D2F1D94489E4642829 /* アーカイブ.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "アーカイブ.zip"; sourceTree = "<group>"; };
+		8AAD9CB6061AC2744347AF4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		993D73AF5235EF483F1D46C8 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		9C82D2E18CF9FA3522232EEA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A92D4A70D35445FA8E927497 /* NotchDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchDetector.swift; sourceTree = "<group>"; };
+		AFE6D6BAC40C7ED389009361 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		B95B45573039FAA24ACC8A3B /* AnimationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationConstants.swift; sourceTree = "<group>"; };
+		C22B862FA43850ECD7F8B6C5 /* OverlayWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowManager.swift; sourceTree = "<group>"; };
+		C840B610EA1923F1EDACB326 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		D33D61ABB752FDDB05375B76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D9AA7EDE698DE14D48074BE2 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		E32EBEAE26F0C3D12D6F0627 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		E7E5E36DE4C11862E802A328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EEEBCE356CCB211EEC592008 /* SystemStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStatsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2FE0F1B602CBAF2BB360B5A8 = {
+			isa = PBXGroup;
+			children = (
+				B8C9606EAFA79BE52EC595E8 /* NotchIsland */,
+				3F7EC9AB6D117BDE15DFDF3A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F7EC9AB6D117BDE15DFDF3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D875A49913E51457FDDC1F5 /* NotchIsland.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		661B197B90A1570732764951 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5E36DE4C11862E802A328 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9E0A1F280A06A1D94ECDD434 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				993D73AF5235EF483F1D46C8 /* CalendarView.swift */,
+				4BA3F231040FD8A4BA79817F /* CompactViews.swift */,
+				02B71634DF40675C723FA084 /* IslandContainerView.swift */,
+				C840B610EA1923F1EDACB326 /* NotificationView.swift */,
+				D9AA7EDE698DE14D48074BE2 /* NowPlayingView.swift */,
+				9C82D2E18CF9FA3522232EEA /* SettingsView.swift */,
+				EEEBCE356CCB211EEC592008 /* SystemStatsView.swift */,
+				AFE6D6BAC40C7ED389009361 /* TimerView.swift */,
+				7D73164AE85BBA23F8A181E6 /* WeatherView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B343662A88DD6F9C22DDEE8F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A92D4A70D35445FA8E927497 /* NotchDetector.swift */,
+				C22B862FA43850ECD7F8B6C5 /* OverlayWindowManager.swift */,
+				2C662A09255BF9EE7EB0AD77 /* WindowTilingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B8C9606EAFA79BE52EC595E8 /* NotchIsland */ = {
+			isa = PBXGroup;
+			children = (
+				8AAD9CB6061AC2744347AF4A /* AppDelegate.swift */,
+				D33D61ABB752FDDB05375B76 /* Info.plist */,
+				69BC08062DE8B9DD5E2B6170 /* NotchIslandApp.swift */,
+				867F52D2F1D94489E4642829 /* アーカイブ.zip */,
+				C875B969DCB3BEEEA895318C /* Models */,
+				661B197B90A1570732764951 /* Resources */,
+				B343662A88DD6F9C22DDEE8F /* Services */,
+				F916602F6766C6909496F23B /* Utils */,
+				D3E89F9C465419941DAA0A0F /* ViewModels */,
+				9E0A1F280A06A1D94ECDD434 /* Views */,
+			);
+			path = NotchIsland;
+			sourceTree = "<group>";
+		};
+		C875B969DCB3BEEEA895318C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				384EDAB920BDD91C84C91F15 /* CalendarEvent.swift */,
+				2E35119DEC854D5E7ADE7D7E /* NowPlayingInfo.swift */,
+				57CC8BC9FEBFB5ACE086468F /* SystemStats.swift */,
+				40BF6DE2439BD27B9402F36D /* TimerState.swift */,
+				5EC225B3600EB93EC56B03E9 /* WeatherInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D3E89F9C465419941DAA0A0F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				61E8D340224E536636056277 /* CalendarViewModel.swift */,
+				E32EBEAE26F0C3D12D6F0627 /* NotificationViewModel.swift */,
+				21E6B8B5B98C2E5445328E41 /* NowPlayingViewModel.swift */,
+				4DE640AE1B9141D9836D650E /* SystemMonitorViewModel.swift */,
+				4B2C63426D80097E4AEB05E2 /* TimerViewModel.swift */,
+				2D1A8135F68FAA14BA405791 /* WeatherViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F916602F6766C6909496F23B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B95B45573039FAA24ACC8A3B /* AnimationConstants.swift */,
+				2BE021217E917B9C7786D23A /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3819A0D0380710C8CFD383F2 /* NotchIsland */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F84CF102E589B8FE82B73C5 /* Build configuration list for PBXNativeTarget "NotchIsland" */;
+			buildPhases = (
+				AA966F3684CEAD4ECD02EC0D /* Sources */,
+				6699DF2CE096347DF16E4C2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotchIsland;
+			packageProductDependencies = (
+			);
+			productName = NotchIsland;
+			productReference = 5D875A49913E51457FDDC1F5 /* NotchIsland.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DEF08971696159969CA7849 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					3819A0D0380710C8CFD383F2 = {
+						DevelopmentTeam = QF29DXX9K6;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 42142FE46086E47C5E1BB42B /* Build configuration list for PBXProject "NotchIsland" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2FE0F1B602CBAF2BB360B5A8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3F7EC9AB6D117BDE15DFDF3A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3819A0D0380710C8CFD383F2 /* NotchIsland */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6699DF2CE096347DF16E4C2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E54A74F3BC8E0823D77342E7 /* Assets.xcassets in Resources */,
+				F12DCBE97FF1EA8FB72722CF /* アーカイブ.zip in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA966F3684CEAD4ECD02EC0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3369936F058489444C0A9523 /* AnimationConstants.swift in Sources */,
+				87A0BA0FB5E63CA2A5B034E7 /* AppDelegate.swift in Sources */,
+				B384C67EF6F8FBC7A5B27CE1 /* CalendarEvent.swift in Sources */,
+				AD0063142C3B17B491E98CDD /* CalendarView.swift in Sources */,
+				7EAB9BA98B929B6601AF5E55 /* CalendarViewModel.swift in Sources */,
+				2922C0F35862BA2C2A9064CC /* CompactViews.swift in Sources */,
+				928FF66874BA333AE21F48F9 /* Extensions.swift in Sources */,
+				41D2555AA60148FA88B613D6 /* IslandContainerView.swift in Sources */,
+				3A17D5C54CB1CA1A02DE3D28 /* NotchDetector.swift in Sources */,
+				83CA1EF8FD142753FABE6A05 /* NotchIslandApp.swift in Sources */,
+				8009544C9ACFABEAD6FE1026 /* NotificationView.swift in Sources */,
+				16A2CB5AFE52B2ED1601FB07 /* NotificationViewModel.swift in Sources */,
+				622A6F2FCCD529179ABFBC32 /* NowPlayingInfo.swift in Sources */,
+				10D553BDCDD5D33C478F00B3 /* NowPlayingView.swift in Sources */,
+				5A7A42510E2CD46D949ECC2C /* NowPlayingViewModel.swift in Sources */,
+				2E03D14EA767A5335F695419 /* OverlayWindowManager.swift in Sources */,
+				6A7A408B08A0B346E7342CAC /* SettingsView.swift in Sources */,
+				0F147961454388AE23B70894 /* SystemMonitorViewModel.swift in Sources */,
+				18A85D3A0DDC7D2F26E03859 /* SystemStats.swift in Sources */,
+				E851602AA3D16AE051226779 /* SystemStatsView.swift in Sources */,
+				70BF0305922FDD879E051094 /* TimerState.swift in Sources */,
+				D3F0ECB57C1C772F9823D48D /* TimerView.swift in Sources */,
+				BA878B0E22418CAB9D743906 /* TimerViewModel.swift in Sources */,
+				0F4F143F930D7B1634A244DF /* WeatherInfo.swift in Sources */,
+				7BC9082A799F73BE28D7C440 /* WeatherView.swift in Sources */,
+				721B546819B1377F77714291 /* WeatherViewModel.swift in Sources */,
+				C23D1DC8AD9D6F4D25037025 /* WindowTilingService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		75E74D7DD7F654D4BC8AD540 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NotchIsland/NotchIsland.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QF29DXX9K6;
+				INFOPLIST_FILE = NotchIsland/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = art.yukosugita.notchisland;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		763FBF03822D8AC486AB7439 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		87D6DAC70CFDC0FA0030DDC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		D4AA860CB4749205C14BF291 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NotchIsland/NotchIsland.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QF29DXX9K6;
+				INFOPLIST_FILE = NotchIsland/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = art.yukosugita.notchisland;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42142FE46086E47C5E1BB42B /* Build configuration list for PBXProject "NotchIsland" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				763FBF03822D8AC486AB7439 /* Debug */,
+				87D6DAC70CFDC0FA0030DDC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8F84CF102E589B8FE82B73C5 /* Build configuration list for PBXNativeTarget "NotchIsland" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4AA860CB4749205C14BF291 /* Debug */,
+				75E74D7DD7F654D4BC8AD540 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8DEF08971696159969CA7849 /* Project object */;
+}
