@@ -112,7 +112,7 @@ NotchIsland/
 
 ## ライセンス
 
-MIT License — 詳細は <LICENSE> をご覧ください。
+MIT License
 
 -----
 
@@ -218,4 +218,4 @@ Weather data powered by **Apple Weather**. [Data Sources](https://weatherkit.app
 
 ## License
 
-MIT License. See <LICENSE> for details.
+MIT License
