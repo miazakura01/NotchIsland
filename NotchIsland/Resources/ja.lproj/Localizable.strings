@@ -1,0 +1,108 @@
+/* Tabs */
+"tab.nowPlaying" = "音楽";
+"tab.timer" = "タイマー";
+"tab.weather" = "天気";
+"tab.systemStats" = "システム";
+"tab.calendar" = "カレンダー";
+
+/* Now Playing */
+"nowPlaying.noContent" = "再生中の曲はありません";
+
+/* Timer */
+"timer.mode.timer" = "タイマー";
+"timer.mode.stopwatch" = "ストップウォッチ";
+"timer.lap" = "ラップ";
+"timer.finished.title" = "タイマー完了";
+"timer.finished.body" = "設定した時間が経過しました";
+"timer.min" = "%d分";
+"timer.sec" = "%d秒";
+
+/* Weather */
+"weather.loading" = "天気を取得中...";
+"weather.feelsLike" = "体感";
+"weather.humidity" = "湿度";
+"weather.wind" = "風速";
+"weather.uv" = "UV";
+"weather.dataSources" = "データソース";
+"weather.error.macOS13" = "macOS 13以降が必要です";
+"weather.error.location" = "位置情報を取得できません";
+"weather.custom" = "カスタム";
+
+/* Weather Conditions */
+"weather.condition.Clear" = "晴れ";
+"weather.condition.MostlyClear" = "概ね晴れ";
+"weather.condition.PartlyCloudy" = "晴れ時々曇り";
+"weather.condition.MostlyCloudy" = "概ね曇り";
+"weather.condition.Cloudy" = "曇り";
+"weather.condition.Rain" = "雨";
+"weather.condition.HeavyRain" = "大雨";
+"weather.condition.Drizzle" = "小雨";
+"weather.condition.Snow" = "雪";
+"weather.condition.HeavySnow" = "大雪";
+"weather.condition.Sleet" = "みぞれ";
+"weather.condition.Thunderstorms" = "雷雨";
+"weather.condition.Foggy" = "霧";
+"weather.condition.Windy" = "強風";
+"weather.condition.Haze" = "もや";
+
+/* System Stats */
+"system.battery" = "バッテリー";
+"system.charging" = "充電中";
+"system.batteryPower" = "バッテリー駆動";
+"system.timeRemaining" = "残り %@";
+"system.chargeComplete" = "完了まで %@";
+"system.hours" = "%d時間%d分";
+"system.minutes" = "%d分";
+
+/* Calendar */
+"calendar.noEvents" = "今日の予定はありません";
+"calendar.noAccess" = "カレンダーへのアクセスを許可してください";
+"calendar.openSettings" = "設定を開く";
+"calendar.allDay" = "終日";
+"calendar.noTitle" = "（タイトルなし）";
+"calendar.minutesUntil" = "%d分後";
+
+/* Settings */
+"settings.title" = "NotchIsland 設定";
+"settings.tab.general" = "一般";
+"settings.tab.features" = "機能";
+"settings.tab.display" = "表示";
+"settings.launchAtLogin" = "ログイン時に自動起動";
+"settings.animationSpeed" = "アニメーション速度";
+"settings.animationSpeed.slow" = "遅い";
+"settings.animationSpeed.normal" = "普通";
+"settings.animationSpeed.fast" = "速い";
+"settings.features.nowPlaying" = "Now Playing（音楽再生）";
+"settings.features.timer" = "タイマー / ストップウォッチ";
+"settings.features.notifications" = "通知表示";
+"settings.features.systemStats" = "バッテリー / CPU モニター";
+"settings.features.calendar" = "カレンダー（次の予定）";
+"settings.features.weather" = "天気";
+"settings.features.priority" = "優先度（上が高い）";
+"settings.features.priorityDesc" = "展開時のデフォルトタブや、Compact表示の優先度に影響します";
+"settings.weather.location" = "場所";
+"settings.weather.currentLocation" = "現在地";
+"settings.weather.manual" = "手動設定";
+"settings.weather.locationName" = "場所の名前";
+"settings.weather.latitude" = "緯度";
+"settings.weather.longitude" = "経度";
+"settings.weather.example" = "例: 東京 → 35.6762, 139.6503";
+"settings.display.displayChoice" = "表示ディスプレイ";
+"settings.display.auto" = "自動（メインディスプレイ）";
+"settings.display.builtIn" = "内蔵ディスプレイ";
+"settings.display.external" = "外部ディスプレイ";
+"settings.display.noNotch" = "ノッチなしMac";
+"settings.display.alwaysVisible" = "常に表示";
+"settings.display.deckMode" = "Deckモード（ホバーで出現）";
+"settings.display.expandOnHover" = "ホバーで展開";
+"settings.display.expandOnHoverDesc" = "ホバーで展開: マウスを乗せると自動で展開します";
+
+/* Menu Bar */
+"menu.settings" = "設定...";
+"menu.quit" = "終了";
+
+/* Language */
+"settings.language" = "言語";
+"language.welcome" = "NotchIslandへようこそ";
+"language.selectLanguage" = "言語を選択してください";
+"language.continue" = "続ける";

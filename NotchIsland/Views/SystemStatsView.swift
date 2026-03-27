@@ -13,12 +13,12 @@ struct SystemStatsView: View {
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 4) {
-                        Text("バッテリー \(vm.stats.batteryLevel)%")
+                        Text("\(L("system.battery")) \(vm.stats.batteryLevel)%")
                             .font(.system(size: 13, weight: .medium))
                             .foregroundColor(.white)
 
                         if vm.stats.isCharging {
-                            Text("充電中")
+                            Text(L("system.charging"))
                                 .font(.system(size: 10, weight: .medium))
                                 .foregroundColor(.green)
                                 .padding(.horizontal, 5)
@@ -31,11 +31,11 @@ struct SystemStatsView: View {
                     }
 
                     if let timeStr = vm.stats.batteryTimeString {
-                        Text(vm.stats.isCharging ? "完了まで \(timeStr)" : "残り \(timeStr)")
+                        Text(vm.stats.isCharging ? String(format: L("system.chargeComplete"), timeStr) : String(format: L("system.timeRemaining"), timeStr))
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
                     } else {
-                        Text(vm.stats.isCharging ? "" : "バッテリー駆動")
+                        Text(vm.stats.isCharging ? "" : L("system.batteryPower"))
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
                     }

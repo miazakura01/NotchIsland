@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var cancellables = Set<AnyCancellable>()
 
+    private var languageWindow: NSWindow?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenuBarItem()
 
@@ -28,6 +30,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             object: nil
         )
 
+        // 初回起動時: 言語選択
+        if settingsManager.appLanguage.isEmpty {
+            showLanguagePicker()
+        } else {
+            launchApp()
+        }
+    }
+
+    private func showLanguagePicker() {
+        let picker = LanguagePickerView { [weak self] language in
+            self?.settingsManager.appLanguage = language
+            self?.languageWindow?.close()
+            self?.languageWindow = nil
+            self?.launchApp()
+        }
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 320, height: 380),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "NotchIsland"
+        window.contentView = NSHostingView(rootView: picker)
+        window.center()
+        window.level = .floating
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        self.languageWindow = window
+    }
+
+    private func launchApp() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.setupOverlayWindow()
             self?.startServices()
@@ -62,9 +96,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func showContextMenu() {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "設定...", action: #selector(openSettings), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: L("menu.settings"), action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "終了", action: #selector(quitApp), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: L("menu.quit"), action: #selector(quitApp), keyEquivalent: "q"))
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
         statusItem.menu = nil
@@ -88,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 backing: .buffered,
                 defer: false
             )
-            window.title = "NotchIsland 設定"
+            window.title = L("settings.title")
             window.contentView = NSHostingView(rootView: settingsView)
             window.center()
             window.isReleasedWhenClosed = false

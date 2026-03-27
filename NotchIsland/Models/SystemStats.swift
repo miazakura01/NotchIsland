@@ -28,8 +28,8 @@ struct SystemStats {
         let hours = minutes / 60
         let mins = minutes % 60
         if hours > 0 {
-            return "\(hours)時間\(mins)分"
+            return String(format: L("system.hours"), hours, mins)
         }
-        return "\(mins)分"
+        return String(format: L("system.minutes"), mins)
     }
 }

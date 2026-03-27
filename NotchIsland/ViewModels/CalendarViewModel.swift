@@ -78,7 +78,7 @@ class CalendarViewModel: ObservableObject {
             .map { ekEvent -> CalendarEvent in
                 CalendarEvent(
                     id: ekEvent.eventIdentifier,
-                    title: ekEvent.title ?? "（タイトルなし）",
+                    title: ekEvent.title ?? L("calendar.noTitle"),
                     startDate: ekEvent.startDate,
                     endDate: ekEvent.endDate,
                     location: ekEvent.location,

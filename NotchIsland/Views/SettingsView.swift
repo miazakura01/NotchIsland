@@ -7,13 +7,13 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             generalSettings
-                .tabItem { Label("一般", systemImage: "gear") }
+                .tabItem { Label(L("settings.tab.general"), systemImage: "gear") }
 
             featureSettings
-                .tabItem { Label("機能", systemImage: "square.grid.2x2") }
+                .tabItem { Label(L("settings.tab.features"), systemImage: "square.grid.2x2") }
 
             displaySettings
-                .tabItem { Label("表示", systemImage: "display") }
+                .tabItem { Label(L("settings.tab.display"), systemImage: "display") }
         }
         .frame(minWidth: 420, minHeight: 380)
     }
@@ -22,15 +22,20 @@ struct SettingsView: View {
 
     private var generalSettings: some View {
         Form {
-            Toggle("ログイン時に自動起動", isOn: $settingsManager.launchAtLogin)
+            Toggle(L("settings.launchAtLogin"), isOn: $settingsManager.launchAtLogin)
                 .onChange(of: settingsManager.launchAtLogin) { newValue in
                     settingsManager.updateLoginItem(enabled: newValue)
                 }
 
-            Picker("アニメーション速度", selection: $settingsManager.animationSpeed) {
-                Text("遅い").tag(AnimationSpeed.slow)
-                Text("普通").tag(AnimationSpeed.normal)
-                Text("速い").tag(AnimationSpeed.fast)
+            Picker(L("settings.animationSpeed"), selection: $settingsManager.animationSpeed) {
+                Text(L("settings.animationSpeed.slow")).tag(AnimationSpeed.slow)
+                Text(L("settings.animationSpeed.normal")).tag(AnimationSpeed.normal)
+                Text(L("settings.animationSpeed.fast")).tag(AnimationSpeed.fast)
+            }
+
+            Picker(L("settings.language"), selection: $settingsManager.appLanguage) {
+                Text("日本語").tag("ja")
+                Text("English").tag("en")
             }
         }
         .padding()
@@ -40,37 +45,37 @@ struct SettingsView: View {
 
     private var featureSettings: some View {
         Form {
-            Section("有効な機能") {
-                Toggle("Now Playing（音楽再生）", isOn: $settingsManager.nowPlayingEnabled)
-                Toggle("タイマー / ストップウォッチ", isOn: $settingsManager.timerEnabled)
-                Toggle("通知表示", isOn: $settingsManager.notificationsEnabled)
-                Toggle("バッテリー / CPU モニター", isOn: $settingsManager.systemStatsEnabled)
-                Toggle("カレンダー（次の予定）", isOn: $settingsManager.calendarEnabled)
-                Toggle("天気", isOn: $settingsManager.weatherEnabled)
+            Section(L("settings.tab.features")) {
+                Toggle(L("settings.features.nowPlaying"), isOn: $settingsManager.nowPlayingEnabled)
+                Toggle(L("settings.features.timer"), isOn: $settingsManager.timerEnabled)
+                Toggle(L("settings.features.notifications"), isOn: $settingsManager.notificationsEnabled)
+                Toggle(L("settings.features.systemStats"), isOn: $settingsManager.systemStatsEnabled)
+                Toggle(L("settings.features.calendar"), isOn: $settingsManager.calendarEnabled)
+                Toggle(L("settings.features.weather"), isOn: $settingsManager.weatherEnabled)
             }
 
-            Section("天気 - 場所設定") {
-                Picker("場所", selection: $settingsManager.weatherLocationMode) {
-                    Text("現在地").tag(WeatherLocationMode.current)
-                    Text("手動設定").tag(WeatherLocationMode.manual)
+            Section(L("settings.weather.location")) {
+                Picker(L("settings.weather.location"), selection: $settingsManager.weatherLocationMode) {
+                    Text(L("settings.weather.currentLocation")).tag(WeatherLocationMode.current)
+                    Text(L("settings.weather.manual")).tag(WeatherLocationMode.manual)
                 }
 
                 if settingsManager.weatherLocationMode == .manual {
-                    TextField("場所の名前", text: $settingsManager.weatherLocationName)
+                    TextField(L("settings.weather.locationName"), text: $settingsManager.weatherLocationName)
                     HStack {
-                        TextField("緯度", text: $settingsManager.weatherLatitude)
+                        TextField(L("settings.weather.latitude"), text: $settingsManager.weatherLatitude)
                             .frame(width: 120)
-                        TextField("経度", text: $settingsManager.weatherLongitude)
+                        TextField(L("settings.weather.longitude"), text: $settingsManager.weatherLongitude)
                             .frame(width: 120)
                     }
-                    Text("例: 東京 → 35.6762, 139.6503")
+                    Text(L("settings.weather.example"))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
 
-            Section("優先度（上が高い）") {
-                Text("展開時のデフォルトタブや、Compact表示の優先度に影響します")
+            Section(L("settings.features.priority")) {
+                Text(L("settings.features.priorityDesc"))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -82,25 +87,36 @@ struct SettingsView: View {
 
     private var displaySettings: some View {
         Form {
-            Section("ディスプレイ") {
-                Picker("表示ディスプレイ", selection: $settingsManager.preferredDisplay) {
-                    Text("自動（メインディスプレイ）").tag(DisplayPreference.auto)
-                    Text("内蔵ディスプレイ").tag(DisplayPreference.builtIn)
-                    Text("外部ディスプレイ").tag(DisplayPreference.external)
+            Section(L("settings.display.displayChoice")) {
+                Picker(L("settings.display.displayChoice"), selection: $settingsManager.preferredDisplay) {
+                    Text(L("settings.display.auto")).tag(DisplayPreference.auto)
+                    Text(L("settings.display.builtIn")).tag(DisplayPreference.builtIn)
+                    Text(L("settings.display.external")).tag(DisplayPreference.external)
                 }
             }
 
-            Section("ノッチなしMac") {
-                Toggle("常に表示", isOn: $settingsManager.alwaysVisible)
-                Toggle("Deckモード（ホバーで出現）", isOn: $settingsManager.deckModeEnabled)
-                Toggle("ホバーで展開", isOn: $settingsManager.expandOnHover)
-                Text("ホバーで展開: マウスを乗せると自動で展開します")
+            Section(L("settings.display.noNotch")) {
+                Toggle(L("settings.display.alwaysVisible"), isOn: $settingsManager.alwaysVisible)
+                Toggle(L("settings.display.deckMode"), isOn: $settingsManager.deckModeEnabled)
+                Toggle(L("settings.display.expandOnHover"), isOn: $settingsManager.expandOnHover)
+                Text(L("settings.display.expandOnHoverDesc"))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
         }
         .padding()
     }
+}
+
+// MARK: - Localization Helper
+
+func L(_ key: String) -> String {
+    let lang = UserDefaults.standard.string(forKey: "appLanguage") ?? "en"
+    guard let path = Bundle.main.path(forResource: lang, ofType: "lproj"),
+          let bundle = Bundle(path: path) else {
+        return NSLocalizedString(key, comment: "")
+    }
+    return NSLocalizedString(key, bundle: bundle, comment: "")
 }
 
 // MARK: - Settings Manager
@@ -150,6 +166,7 @@ class SettingsManager: ObservableObject {
     @AppStorage("weatherLocationName") var weatherLocationName = ""
     @AppStorage("weatherLatitude") var weatherLatitude = ""
     @AppStorage("weatherLongitude") var weatherLongitude = ""
+    @AppStorage("appLanguage") var appLanguage = ""
 
     func updateLoginItem(enabled: Bool) {
         if #available(macOS 13.0, *) {

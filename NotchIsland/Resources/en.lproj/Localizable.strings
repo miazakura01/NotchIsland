@@ -1,0 +1,108 @@
+/* Tabs */
+"tab.nowPlaying" = "Music";
+"tab.timer" = "Timer";
+"tab.weather" = "Weather";
+"tab.systemStats" = "System";
+"tab.calendar" = "Calendar";
+
+/* Now Playing */
+"nowPlaying.noContent" = "Nothing playing";
+
+/* Timer */
+"timer.mode.timer" = "Timer";
+"timer.mode.stopwatch" = "Stopwatch";
+"timer.lap" = "Lap";
+"timer.finished.title" = "Timer Done";
+"timer.finished.body" = "Time is up!";
+"timer.min" = "%d min";
+"timer.sec" = "%d sec";
+
+/* Weather */
+"weather.loading" = "Loading weather...";
+"weather.feelsLike" = "Feels";
+"weather.humidity" = "Humidity";
+"weather.wind" = "Wind";
+"weather.uv" = "UV";
+"weather.dataSources" = "Data Sources";
+"weather.error.macOS13" = "Requires macOS 13 or later";
+"weather.error.location" = "Unable to get location";
+"weather.custom" = "Custom";
+
+/* Weather Conditions */
+"weather.condition.Clear" = "Clear";
+"weather.condition.MostlyClear" = "Mostly Clear";
+"weather.condition.PartlyCloudy" = "Partly Cloudy";
+"weather.condition.MostlyCloudy" = "Mostly Cloudy";
+"weather.condition.Cloudy" = "Cloudy";
+"weather.condition.Rain" = "Rain";
+"weather.condition.HeavyRain" = "Heavy Rain";
+"weather.condition.Drizzle" = "Drizzle";
+"weather.condition.Snow" = "Snow";
+"weather.condition.HeavySnow" = "Heavy Snow";
+"weather.condition.Sleet" = "Sleet";
+"weather.condition.Thunderstorms" = "Thunderstorms";
+"weather.condition.Foggy" = "Foggy";
+"weather.condition.Windy" = "Windy";
+"weather.condition.Haze" = "Haze";
+
+/* System Stats */
+"system.battery" = "Battery";
+"system.charging" = "Charging";
+"system.batteryPower" = "On Battery";
+"system.timeRemaining" = "%@ remaining";
+"system.chargeComplete" = "Charge complete in %@";
+"system.hours" = "%dh %dm";
+"system.minutes" = "%dm";
+
+/* Calendar */
+"calendar.noEvents" = "No events today";
+"calendar.noAccess" = "Please allow calendar access";
+"calendar.openSettings" = "Open Settings";
+"calendar.allDay" = "All Day";
+"calendar.noTitle" = "(No Title)";
+"calendar.minutesUntil" = "%d min";
+
+/* Settings */
+"settings.title" = "NotchIsland Settings";
+"settings.tab.general" = "General";
+"settings.tab.features" = "Features";
+"settings.tab.display" = "Display";
+"settings.launchAtLogin" = "Launch at login";
+"settings.animationSpeed" = "Animation speed";
+"settings.animationSpeed.slow" = "Slow";
+"settings.animationSpeed.normal" = "Normal";
+"settings.animationSpeed.fast" = "Fast";
+"settings.features.nowPlaying" = "Now Playing (Music)";
+"settings.features.timer" = "Timer / Stopwatch";
+"settings.features.notifications" = "Notifications";
+"settings.features.systemStats" = "Battery / CPU Monitor";
+"settings.features.calendar" = "Calendar (Next Event)";
+"settings.features.weather" = "Weather";
+"settings.features.priority" = "Priority (top is higher)";
+"settings.features.priorityDesc" = "Affects default tab and compact display priority";
+"settings.weather.location" = "Location";
+"settings.weather.currentLocation" = "Current Location";
+"settings.weather.manual" = "Manual";
+"settings.weather.locationName" = "Location name";
+"settings.weather.latitude" = "Latitude";
+"settings.weather.longitude" = "Longitude";
+"settings.weather.example" = "e.g. Tokyo → 35.6762, 139.6503";
+"settings.display.displayChoice" = "Display";
+"settings.display.auto" = "Auto (Main Display)";
+"settings.display.builtIn" = "Built-in Display";
+"settings.display.external" = "External Display";
+"settings.display.noNotch" = "Non-notch Mac";
+"settings.display.alwaysVisible" = "Always visible";
+"settings.display.deckMode" = "Deck Mode (appear on hover)";
+"settings.display.expandOnHover" = "Expand on hover";
+"settings.display.expandOnHoverDesc" = "Expand on hover: auto-expands when mouse enters";
+
+/* Menu Bar */
+"menu.settings" = "Settings...";
+"menu.quit" = "Quit";
+
+/* Language */
+"settings.language" = "Language";
+"language.welcome" = "Welcome to NotchIsland";
+"language.selectLanguage" = "Select your language";
+"language.continue" = "Continue";

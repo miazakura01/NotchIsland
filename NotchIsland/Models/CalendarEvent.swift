@@ -10,7 +10,7 @@ struct CalendarEvent: Identifiable {
     var calendarColor: String?
 
     var timeString: String {
-        if isAllDay { return "終日" }
+        if isAllDay { return L("calendar.allDay") }
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: startDate)

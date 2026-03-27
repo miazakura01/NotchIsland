@@ -98,7 +98,7 @@ struct NowPlayingView: View {
                     .font(.system(size: 28))
                     .foregroundColor(.white.opacity(0.3))
 
-                Text("再生中の曲はありません")
+                Text("\(L("nowPlaying.noContent"))")
                     .font(.system(size: 12))
                     .foregroundColor(.gray)
             }

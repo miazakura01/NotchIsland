@@ -17,10 +17,12 @@
 		3369936F058489444C0A9523 /* AnimationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95B45573039FAA24ACC8A3B /* AnimationConstants.swift */; };
 		3A17D5C54CB1CA1A02DE3D28 /* NotchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4A70D35445FA8E927497 /* NotchDetector.swift */; };
 		41D2555AA60148FA88B613D6 /* IslandContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B71634DF40675C723FA084 /* IslandContainerView.swift */; };
+		43D0EF9F483B94C4B9B2FF9F /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335688E99D4EBABFCD9BCF8 /* LanguagePickerView.swift */; };
 		5A7A42510E2CD46D949ECC2C /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6B8B5B98C2E5445328E41 /* NowPlayingViewModel.swift */; };
 		622A6F2FCCD529179ABFBC32 /* NowPlayingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35119DEC854D5E7ADE7D7E /* NowPlayingInfo.swift */; };
 		6A7A408B08A0B346E7342CAC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82D2E18CF9FA3522232EEA /* SettingsView.swift */; };
 		70BF0305922FDD879E051094 /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF6DE2439BD27B9402F36D /* TimerState.swift */; };
+		720A40C5408A6DA68E7FC1C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E744DC77016481F2C3D9377D /* Localizable.strings */; };
 		721B546819B1377F77714291 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A8135F68FAA14BA405791 /* WeatherViewModel.swift */; };
 		7BC9082A799F73BE28D7C440 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73164AE85BBA23F8A181E6 /* WeatherView.swift */; };
 		7EAB9BA98B929B6601AF5E55 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E8D340224E536636056277 /* CalendarViewModel.swift */; };
@@ -35,7 +37,6 @@
 		D3F0ECB57C1C772F9823D48D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE6D6BAC40C7ED389009361 /* TimerView.swift */; };
 		E54A74F3BC8E0823D77342E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E36DE4C11862E802A328 /* Assets.xcassets */; };
 		E851602AA3D16AE051226779 /* SystemStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEBCE356CCB211EEC592008 /* SystemStatsView.swift */; };
-		F12DCBE97FF1EA8FB72722CF /* アーカイブ.zip in Resources */ = {isa = PBXBuildFile; fileRef = 867F52D2F1D94489E4642829 /* アーカイブ.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,14 +57,16 @@
 		61E8D340224E536636056277 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		69BC08062DE8B9DD5E2B6170 /* NotchIslandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchIslandApp.swift; sourceTree = "<group>"; };
 		7D73164AE85BBA23F8A181E6 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		867F52D2F1D94489E4642829 /* アーカイブ.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "アーカイブ.zip"; sourceTree = "<group>"; };
 		8AAD9CB6061AC2744347AF4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		926B1AF8E4591A5C67106B93 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		993D73AF5235EF483F1D46C8 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9C82D2E18CF9FA3522232EEA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A92D4A70D35445FA8E927497 /* NotchDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchDetector.swift; sourceTree = "<group>"; };
 		AFE6D6BAC40C7ED389009361 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		B556CA6E354C0E6947A16D14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B95B45573039FAA24ACC8A3B /* AnimationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationConstants.swift; sourceTree = "<group>"; };
 		C22B862FA43850ECD7F8B6C5 /* OverlayWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowManager.swift; sourceTree = "<group>"; };
+		C335688E99D4EBABFCD9BCF8 /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 		C840B610EA1923F1EDACB326 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		D33D61ABB752FDDB05375B76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D9AA7EDE698DE14D48074BE2 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E7E5E36DE4C11862E802A328 /* Assets.xcassets */,
+				E744DC77016481F2C3D9377D /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -103,6 +107,7 @@
 				993D73AF5235EF483F1D46C8 /* CalendarView.swift */,
 				4BA3F231040FD8A4BA79817F /* CompactViews.swift */,
 				02B71634DF40675C723FA084 /* IslandContainerView.swift */,
+				C335688E99D4EBABFCD9BCF8 /* LanguagePickerView.swift */,
 				C840B610EA1923F1EDACB326 /* NotificationView.swift */,
 				D9AA7EDE698DE14D48074BE2 /* NowPlayingView.swift */,
 				9C82D2E18CF9FA3522232EEA /* SettingsView.swift */,
@@ -129,7 +134,6 @@
 				8AAD9CB6061AC2744347AF4A /* AppDelegate.swift */,
 				D33D61ABB752FDDB05375B76 /* Info.plist */,
 				69BC08062DE8B9DD5E2B6170 /* NotchIslandApp.swift */,
-				867F52D2F1D94489E4642829 /* アーカイブ.zip */,
 				C875B969DCB3BEEEA895318C /* Models */,
 				661B197B90A1570732764951 /* Resources */,
 				B343662A88DD6F9C22DDEE8F /* Services */,
@@ -216,6 +220,7 @@
 			knownRegions = (
 				Base,
 				en,
+				ja,
 			);
 			mainGroup = 2FE0F1B602CBAF2BB360B5A8;
 			minimizedProjectReferenceProxies = 1;
@@ -235,7 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E54A74F3BC8E0823D77342E7 /* Assets.xcassets in Resources */,
-				F12DCBE97FF1EA8FB72722CF /* アーカイブ.zip in Resources */,
+				720A40C5408A6DA68E7FC1C9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +259,7 @@
 				2922C0F35862BA2C2A9064CC /* CompactViews.swift in Sources */,
 				928FF66874BA333AE21F48F9 /* Extensions.swift in Sources */,
 				41D2555AA60148FA88B613D6 /* IslandContainerView.swift in Sources */,
+				43D0EF9F483B94C4B9B2FF9F /* LanguagePickerView.swift in Sources */,
 				3A17D5C54CB1CA1A02DE3D28 /* NotchDetector.swift in Sources */,
 				83CA1EF8FD142753FABE6A05 /* NotchIslandApp.swift in Sources */,
 				8009544C9ACFABEAD6FE1026 /* NotificationView.swift in Sources */,
@@ -277,6 +283,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E744DC77016481F2C3D9377D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B556CA6E354C0E6947A16D14 /* en */,
+				926B1AF8E4591A5C67106B93 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		75E74D7DD7F654D4BC8AD540 /* Release */ = {

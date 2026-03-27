@@ -11,7 +11,7 @@ struct CalendarView: View {
                         .font(.system(size: 28))
                         .foregroundColor(.white.opacity(0.3))
 
-                    Text("今日の予定はありません")
+                    Text("\(L("calendar.noEvents"))")
                         .font(.system(size: 12))
                         .foregroundColor(.gray)
                 }
@@ -31,12 +31,12 @@ struct CalendarView: View {
                     .font(.system(size: 28))
                     .foregroundColor(.orange)
 
-                Text("カレンダーへのアクセスを許可してください")
+                Text("\(L("calendar.noAccess"))")
                     .font(.system(size: 12))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
 
-                Button("設定を開く") {
+                Button(L("calendar.openSettings")) {
                     if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars") {
                         NSWorkspace.shared.open(url)
                     }

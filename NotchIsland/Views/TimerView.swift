@@ -10,8 +10,8 @@ struct TimerView: View {
         VStack(spacing: 12) {
             // モード切替
             HStack(spacing: 0) {
-                modeButton("タイマー", mode: .timer)
-                modeButton("ストップウォッチ", mode: .stopwatch)
+                modeButton(L("timer.mode.timer"), mode: .timer)
+                modeButton(L("timer.mode.stopwatch"), mode: .stopwatch)
             }
             .background(Color.white.opacity(0.1))
             .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -123,7 +123,7 @@ struct TimerView: View {
                     VStack(spacing: 2) {
                         ForEach(vm.state.laps.indices.reversed(), id: \.self) { i in
                             HStack {
-                                Text("ラップ \(i + 1)")
+                                Text("\(L("timer.lap")) \(i + 1)")
                                     .font(.system(size: 10))
                                     .foregroundColor(.gray)
                                 Spacer()

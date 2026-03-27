@@ -44,7 +44,7 @@ class TimerViewModel: ObservableObject {
 
     private func timerFinished() {
         stopTimer()
-        sendNotification(title: "タイマー完了", body: "設定した時間が経過しました")
+        sendNotification(title: L("timer.finished.title"), body: L("timer.finished.body"))
     }
 
     // MARK: - Stopwatch

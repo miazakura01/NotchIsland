@@ -1,11 +1,21 @@
 import SwiftUI
 
-enum IslandTab: String, CaseIterable {
-    case nowPlaying = "音楽"
-    case timer = "タイマー"
-    case weather = "天気"
-    case systemStats = "システム"
-    case calendar = "カレンダー"
+enum IslandTab: CaseIterable {
+    case nowPlaying
+    case timer
+    case weather
+    case systemStats
+    case calendar
+
+    var label: String {
+        switch self {
+        case .nowPlaying: return NSLocalizedString("tab.nowPlaying", comment: "")
+        case .timer: return NSLocalizedString("tab.timer", comment: "")
+        case .weather: return NSLocalizedString("tab.weather", comment: "")
+        case .systemStats: return NSLocalizedString("tab.systemStats", comment: "")
+        case .calendar: return NSLocalizedString("tab.calendar", comment: "")
+        }
+    }
 }
 
 struct IslandContainerView: View {
@@ -172,7 +182,7 @@ struct IslandContainerView: View {
             windowManager.expandedHeight = heightForTab(tab)
             windowManager.updatePanelFrameAnimated()
         }) {
-            Text(tab.rawValue)
+            Text(tab.label)
                 .font(.system(size: 11, weight: currentTab == tab ? .semibold : .regular))
                 .foregroundColor(currentTab == tab ? .white : .gray)
                 .padding(.vertical, 6)

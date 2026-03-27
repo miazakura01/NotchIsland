@@ -64,9 +64,9 @@ struct WeatherView: View {
 
                 // 詳細
                 HStack(spacing: 16) {
-                    weatherDetail(icon: "thermometer", label: "体感", value: String(format: "%.0f°", vm.weather.feelsLike))
-                    weatherDetail(icon: "humidity", label: "湿度", value: String(format: "%.0f%%", vm.weather.humidity * 100))
-                    weatherDetail(icon: "wind", label: "風速", value: String(format: "%.0fkm/h", vm.weather.windSpeed))
+                    weatherDetail(icon: "thermometer", label: L("weather.feelsLike"), value: String(format: "%.0f°", vm.weather.feelsLike))
+                    weatherDetail(icon: "humidity", label: L("weather.humidity"), value: String(format: "%.0f%%", vm.weather.humidity * 100))
+                    weatherDetail(icon: "wind", label: L("weather.wind"), value: String(format: "%.0fkm/h", vm.weather.windSpeed))
                     weatherDetail(icon: "sun.max", label: "UV", value: "\(vm.weather.uvIndex)")
                 }
 
@@ -81,7 +81,7 @@ struct WeatherView: View {
                     Text("—")
                         .font(.system(size: 8))
                         .foregroundColor(.gray.opacity(0.4))
-                    Link("データソース", destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                    Link(L("weather.dataSources"), destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
                         .font(.system(size: 8))
                         .foregroundColor(.gray.opacity(0.6))
                 }
@@ -104,7 +104,7 @@ struct WeatherView: View {
             VStack(spacing: 8) {
                 ProgressView()
                     .scaleEffect(0.8)
-                Text("天気を取得中...")
+                Text(L("weather.loading"))
                     .font(.system(size: 11))
                     .foregroundColor(.gray)
             }
