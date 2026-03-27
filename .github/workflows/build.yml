@@ -65,6 +65,9 @@ jobs:
             -scheme NotchIsland \
             -configuration Release \
             -archivePath build/NotchIsland.xcarchive \
+            -destination "generic/platform=macOS" \
+            ARCHS="x86_64 arm64" \
+            ONLY_ACTIVE_ARCH=NO \
             archive \
             CODE_SIGN_IDENTITY="Developer ID Application: Yuko Koike (QF29DXX9K6)" \
             DEVELOPMENT_TEAM=QF29DXX9K6 \
