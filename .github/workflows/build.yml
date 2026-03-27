@@ -1,0 +1,126 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Import signing certificate
+        env:
+          CERTIFICATE_P12: ${{ secrets.CERTIFICATE_P12 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+          PROVISIONING_PROFILE: ${{ secrets.PROVISIONING_PROFILE }}
+        run: |
+          # Create temporary keychain
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+          KEYCHAIN_PASSWORD=$(openssl rand -base64 32)
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # Import certificate
+          echo "$CERTIFICATE_P12" | base64 --decode > $RUNNER_TEMP/certificate.p12
+          security import $RUNNER_TEMP/certificate.p12 \
+            -P "$CERTIFICATE_PASSWORD" \
+            -A -t cert -f pkcs12 \
+            -k $KEYCHAIN_PATH
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+          # Install provisioning profile
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "$PROVISIONING_PROFILE" | base64 --decode > $RUNNER_TEMP/profile.provisionprofile
+          PROFILE_UUID=$(security cms -D -i $RUNNER_TEMP/profile.provisionprofile | plutil -extract UUID raw -)
+          cp $RUNNER_TEMP/profile.provisionprofile ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_UUID.provisionprofile
+
+      - name: Build archive
+        env:
+          PROFILE_UUID: ${{ secrets.PROFILE_UUID }}
+        run: |
+          xcodebuild \
+            -project NotchIsland.xcodeproj \
+            -scheme NotchIsland \
+            -configuration Release \
+            -archivePath build/NotchIsland.xcarchive \
+            archive \
+            CODE_SIGN_IDENTITY="Developer ID Application: Yuko Koike (QF29DXX9K6)" \
+            DEVELOPMENT_TEAM=QF29DXX9K6 \
+            PROVISIONING_PROFILE="$PROFILE_UUID" \
+            OTHER_CODE_SIGN_FLAGS="--options=runtime"
+
+      - name: Export app
+        run: |
+          cat > export.plist << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>developer-id</string>
+              <key>teamID</key>
+              <string>QF29DXX9K6</string>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>signingCertificate</key>
+              <string>Developer ID Application</string>
+              <key>provisioningProfiles</key>
+              <dict>
+                  <key>art.yukosugita.notchisland</key>
+                  <string>NotchIsland</string>
+              </dict>
+          </dict>
+          </plist>
+          EOF
+
+          xcodebuild -exportArchive \
+            -archivePath build/NotchIsland.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist export.plist
+
+      - name: Create zip
+        run: |
+          cd build/export
+          ditto -c -k --keepParent NotchIsland.app NotchIsland.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NotchIsland
+          path: build/export/NotchIsland.zip
+
+      - name: Cleanup keychain
+        if: always()
+        run: security delete-keychain $RUNNER_TEMP/app-signing.keychain-db || true
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: NotchIsland
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: NotchIsland.zip
+          generate_release_notes: true
