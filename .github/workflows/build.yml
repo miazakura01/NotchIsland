@@ -103,10 +103,26 @@ jobs:
             -exportPath build/export \
             -exportOptionsPlist export.plist
 
-      - name: Create zip
+      - name: Notarize app
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
         run: |
           cd build/export
-          xattr -cr NotchIsland.app
+          ditto -c -k --keepParent NotchIsland.app NotchIsland.zip
+
+          xcrun notarytool submit NotchIsland.zip \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --team-id QF29DXX9K6 \
+            --wait --timeout 600
+
+          xcrun stapler staple NotchIsland.app
+
+      - name: Create zip (stapled)
+        run: |
+          cd build/export
+          rm -f NotchIsland.zip
           ditto -c -k --keepParent NotchIsland.app NotchIsland.zip
 
       - name: Create GitHub Release
