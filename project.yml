@@ -19,6 +19,7 @@ targets:
       - path: NotchIsland
         excludes:
           - "NotchIsland.entitlements"
+          - "*.zip"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: art.yukosugita.notchisland
