@@ -11,6 +11,7 @@
 -----
 
 # 🇯🇵 日本語
+ダウンロード：[Release](https://github.com/miazakura01/NotchIsland/releases)
 
 iPhoneのDynamic IslandをmacOSに。ノッチ周辺に便利な情報を表示するメニューバーアプリです。ノッチのないMacでは、フローティングピルとして動作します。
 
@@ -117,6 +118,7 @@ MIT License
 -----
 
 # 🇬🇧 English
+Download: [Release](https://github.com/miazakura01/NotchIsland/releases)
 
 iPhone-style Dynamic Island for macOS. Displays useful information around the notch area, or as a floating pill on non-notch Macs.
 
