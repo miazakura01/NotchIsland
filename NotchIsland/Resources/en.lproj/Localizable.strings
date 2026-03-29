@@ -14,8 +14,8 @@
 "timer.lap" = "Lap";
 "timer.finished.title" = "Timer Done";
 "timer.finished.body" = "Time is up!";
-"timer.min" = "%d min";
-"timer.sec" = "%d sec";
+"timer.min" = "min";
+"timer.sec" = "sec";
 
 /* Weather */
 "weather.loading" = "Loading weather...";
