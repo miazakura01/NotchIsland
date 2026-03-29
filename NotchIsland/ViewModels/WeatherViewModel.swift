@@ -97,7 +97,9 @@ class WeatherViewModel: NSObject, ObservableObject {
     }
 
     private func localizedCondition(_ code: String) -> String {
-        let key = "weather.condition.\(code)"
+        // WeatherKitは小文字始まり(mostlyClear)、キーは大文字始まり(MostlyClear)
+        let capitalized = code.prefix(1).uppercased() + code.dropFirst()
+        let key = "weather.condition.\(capitalized)"
         let result = L(key)
         return result == key ? code : result
     }
