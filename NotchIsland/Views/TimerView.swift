@@ -31,20 +31,30 @@ struct TimerView: View {
         VStack(spacing: 10) {
             if !vm.hasActiveTimer {
                 // 時間設定
-                HStack(spacing: 4) {
-                    Picker("", selection: $selectedMinutes) {
-                        ForEach(0..<60) { Text("\($0)分").tag($0) }
+                HStack(spacing: 8) {
+                    HStack(spacing: 4) {
+                        TextField("", value: $selectedMinutes, format: .number)
+                            .frame(width: 40)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.center)
+                        Stepper("", value: $selectedMinutes, in: 0...120)
+                            .labelsHidden()
+                        Text(L("timer.min"))
+                            .font(.system(size: 11))
+                            .foregroundColor(.gray)
                     }
-                    .frame(width: 70)
-                    .labelsHidden()
 
-                    Picker("", selection: $selectedSeconds) {
-                        ForEach(Array(stride(from: 0, to: 60, by: 5)), id: \.self) {
-                            Text("\($0)秒").tag($0)
-                        }
+                    HStack(spacing: 4) {
+                        TextField("", value: $selectedSeconds, format: .number)
+                            .frame(width: 40)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.center)
+                        Stepper("", value: $selectedSeconds, in: 0...55, step: 5)
+                            .labelsHidden()
+                        Text(L("timer.sec"))
+                            .font(.system(size: 11))
+                            .foregroundColor(.gray)
                     }
-                    .frame(width: 70)
-                    .labelsHidden()
                 }
                 .colorScheme(.dark)
             }

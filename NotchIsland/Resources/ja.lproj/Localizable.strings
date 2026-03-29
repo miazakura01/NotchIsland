@@ -14,8 +14,8 @@
 "timer.lap" = "ラップ";
 "timer.finished.title" = "タイマー完了";
 "timer.finished.body" = "設定した時間が経過しました";
-"timer.min" = "%d分";
-"timer.sec" = "%d秒";
+"timer.min" = "分";
+"timer.sec" = "秒";
 
 /* Weather */
 "weather.loading" = "天気を取得中...";
