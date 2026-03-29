@@ -53,6 +53,8 @@
 "system.chargeComplete" = "完了まで %@";
 "system.hours" = "%d時間%d分";
 "system.minutes" = "%d分";
+"system.cpu" = "CPU";
+"system.memory" = "メモリ";
 
 /* Calendar */
 "calendar.noEvents" = "今日の予定はありません";
