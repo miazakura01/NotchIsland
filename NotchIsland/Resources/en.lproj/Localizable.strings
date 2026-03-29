@@ -53,6 +53,8 @@
 "system.chargeComplete" = "Charge complete in %@";
 "system.hours" = "%dh %dm";
 "system.minutes" = "%dm";
+"system.cpu" = "CPU";
+"system.memory" = "Memory";
 
 /* Calendar */
 "calendar.noEvents" = "No events today";

@@ -74,7 +74,7 @@ struct SystemStatsView: View {
                     .foregroundColor(.purple)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(String(format: "メモリ %.1f / %.0f GB", vm.stats.memoryUsedGB, vm.stats.memoryTotalGB))
+                    Text(String(format: "%@ %.1f / %.0f GB", L("system.memory"), vm.stats.memoryUsedGB, vm.stats.memoryTotalGB))
                         .font(.system(size: 13, weight: .medium))
                         .foregroundColor(.white)
                 }

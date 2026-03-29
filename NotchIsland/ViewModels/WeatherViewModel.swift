@@ -78,7 +78,7 @@ class WeatherViewModel: NSObject, ObservableObject {
 
             self.weather = WeatherInfo(
                 temperature: current.temperature.value,
-                condition: current.condition.description,
+                condition: localizedCondition(current.condition.rawValue),
                 symbolName: current.symbolName,
                 locationName: self.weather.locationName,
                 humidity: current.humidity,
@@ -94,6 +94,12 @@ class WeatherViewModel: NSObject, ObservableObject {
             self.errorMessage = "天気取得エラー: \(error.localizedDescription)"
             print("[Weather] Error: \(error)")
         }
+    }
+
+    private func localizedCondition(_ code: String) -> String {
+        let key = "weather.condition.\(code)"
+        let result = L(key)
+        return result == key ? code : result
     }
 
     private func reverseGeocode(_ location: CLLocation) {
@@ -129,6 +135,6 @@ extension WeatherViewModel: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("[Weather] Location error: \(error)")
-        errorMessage = "位置情報を取得できません"
+        errorMessage = L("weather.error.location")
     }
 }

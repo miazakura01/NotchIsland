@@ -9,11 +9,11 @@ enum IslandTab: CaseIterable {
 
     var label: String {
         switch self {
-        case .nowPlaying: return NSLocalizedString("tab.nowPlaying", comment: "")
-        case .timer: return NSLocalizedString("tab.timer", comment: "")
-        case .weather: return NSLocalizedString("tab.weather", comment: "")
-        case .systemStats: return NSLocalizedString("tab.systemStats", comment: "")
-        case .calendar: return NSLocalizedString("tab.calendar", comment: "")
+        case .nowPlaying: return L("tab.nowPlaying")
+        case .timer: return L("tab.timer")
+        case .weather: return L("tab.weather")
+        case .systemStats: return L("tab.systemStats")
+        case .calendar: return L("tab.calendar")
         }
     }
 }

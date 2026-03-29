@@ -111,7 +111,12 @@ struct SettingsView: View {
 // MARK: - Localization Helper
 
 func L(_ key: String) -> String {
-    let lang = UserDefaults.standard.string(forKey: "appLanguage") ?? "en"
+    var lang = UserDefaults.standard.string(forKey: "appLanguage") ?? ""
+    if lang.isEmpty {
+        // システム言語にフォールバック
+        let preferred = Locale.preferredLanguages.first ?? "en"
+        lang = preferred.hasPrefix("ja") ? "ja" : "en"
+    }
     guard let path = Bundle.main.path(forResource: lang, ofType: "lproj"),
           let bundle = Bundle(path: path) else {
         return NSLocalizedString(key, comment: "")
