@@ -14,6 +14,7 @@
 "timer.lap" = "Lap";
 "timer.finished.title" = "Timer Done";
 "timer.finished.body" = "Time is up!";
+"timer.stopAlarm" = "Stop Alarm";
 "timer.min" = "min";
 "timer.sec" = "sec";
 

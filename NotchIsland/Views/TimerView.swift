@@ -59,6 +59,27 @@ struct TimerView: View {
                 .colorScheme(.dark)
             }
 
+            // アラーム中
+            if vm.isAlarming {
+                VStack(spacing: 12) {
+                    Text("🔔")
+                        .font(.system(size: 36))
+
+                    Button(action: {
+                        vm.stopAlarm()
+                        vm.resetTimer()
+                    }) {
+                        Text(L("timer.stopAlarm"))
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.red))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
             // 表示
             Text(vm.state.displayTime)
                 .font(.system(size: 32, weight: .light, design: .monospaced))

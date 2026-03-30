@@ -5,8 +5,11 @@ import UserNotifications
 class TimerViewModel: ObservableObject {
     @Published var state = TimerState()
     @Published var hasActiveTimer = false
+    @Published var isAlarming = false
 
     private var timer: Timer?
+    private var alarmTimer: Timer?
+    private var alarmSound: NSSound?
     private var timerStartDate: Date?
     private var timerStartRemaining: TimeInterval = 0
     private var stopwatchStartDate: Date?
@@ -50,12 +53,17 @@ class TimerViewModel: ObservableObject {
     }
 
     private func playAlarmSound() {
-        // システムサウンドを3回鳴らす
-        for i in 0..<3 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.8) {
-                NSSound(named: "Glass")?.play()
-            }
-        }
+        isAlarming = true
+        // 止めるまでループで鳴らす
+        alarmSound = NSSound(named: "Glass")
+        alarmSound?.loops = true
+        alarmSound?.play()
+    }
+
+    func stopAlarm() {
+        alarmSound?.stop()
+        alarmSound = nil
+        isAlarming = false
     }
 
     // MARK: - Stopwatch

@@ -14,6 +14,7 @@
 "timer.lap" = "ラップ";
 "timer.finished.title" = "タイマー完了";
 "timer.finished.body" = "設定した時間が経過しました";
+"timer.stopAlarm" = "アラームを止める";
 "timer.min" = "分";
 "timer.sec" = "秒";
 
