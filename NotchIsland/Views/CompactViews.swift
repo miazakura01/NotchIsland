@@ -68,6 +68,8 @@ struct CompactCalendarView: View {
 
     var body: some View {
         HStack(spacing: 6) {
+            Spacer(minLength: 0)
+
             Image(systemName: "calendar")
                 .font(.system(size: 11))
                 .foregroundColor(.cyan)
@@ -80,6 +82,8 @@ struct CompactCalendarView: View {
             Text(event.timeString)
                 .font(.system(size: 11))
                 .foregroundColor(.gray)
+
+            Spacer(minLength: 0)
         }
     }
 }
