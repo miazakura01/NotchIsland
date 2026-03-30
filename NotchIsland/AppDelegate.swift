@@ -166,6 +166,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         calendarVM.requestAccessAndFetch()
         configureWeather()
         setupWindowTiling()
+        timerVM.requestNotificationPermission()
 
         // 設定変更を監視
         NotificationCenter.default.addObserver(
