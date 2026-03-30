@@ -1,4 +1,5 @@
 import Foundation
+import AppKit
 import UserNotifications
 
 class TimerViewModel: ObservableObject {
@@ -45,6 +46,16 @@ class TimerViewModel: ObservableObject {
     private func timerFinished() {
         stopTimer()
         sendNotification(title: L("timer.finished.title"), body: L("timer.finished.body"))
+        playAlarmSound()
+    }
+
+    private func playAlarmSound() {
+        // システムサウンドを3回鳴らす
+        for i in 0..<3 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.8) {
+                NSSound(named: "Glass")?.play()
+            }
+        }
     }
 
     // MARK: - Stopwatch
