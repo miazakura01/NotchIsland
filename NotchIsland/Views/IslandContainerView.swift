@@ -1,5 +1,12 @@
 import SwiftUI
 
+struct ContentHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}
+
 enum IslandTab: CaseIterable {
     case nowPlaying
     case timer
@@ -30,48 +37,10 @@ struct IslandContainerView: View {
 
     @State private var currentTab: IslandTab = .nowPlaying
     @State private var isHovering = false
+    @State private var contentHeight: CGFloat = 36
 
     var body: some View {
-        ZStack {
-            // Liquid Glass背景（クリア）
-            ZStack {
-                // ガラスブラー（最も薄いマテリアル）
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(.thinMaterial)
-                    .opacity(0.7)
-
-                // 明るいガラスオーバーレイ
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.white.opacity(0.25),
-                                Color.white.opacity(0.08),
-                                Color.white.opacity(0.03)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-
-                // 光沢ボーダー
-                RoundedRectangle(cornerRadius: 24)
-                    .strokeBorder(
-                        LinearGradient(
-                            colors: [
-                                Color.white.opacity(0.6),
-                                Color.white.opacity(0.2),
-                                Color.white.opacity(0.1)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ),
-                        lineWidth: 1.0
-                    )
-            }
-            .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
-
-            // 通知オーバーレイ（最優先表示）
+        Group {
             if notificationVM.hasNotification {
                 notificationOverlay
             } else {
@@ -87,6 +56,21 @@ struct IslandContainerView: View {
                     expandedContent
                 case .hidden:
                     EmptyView()
+                }
+            }
+        }
+        .background(glassBackground)
+        .background(
+            GeometryReader { geo in
+                Color.clear.preference(key: ContentHeightKey.self, value: geo.size.height)
+            }
+        )
+        .onPreferenceChange(ContentHeightKey.self) { height in
+            if height != contentHeight && height > 0 {
+                contentHeight = height
+                windowManager.expandedHeight = height
+                if windowManager.state == .expanded {
+                    windowManager.updatePanelFrameAnimated()
                 }
             }
         }
@@ -186,6 +170,44 @@ struct IslandContainerView: View {
                 )
         }
         .buttonStyle(.plain)
+    }
+
+    // MARK: - Glass Background
+
+    private var glassBackground: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 24)
+                .fill(.thinMaterial)
+                .opacity(0.7)
+
+            RoundedRectangle(cornerRadius: 24)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.25),
+                            Color.white.opacity(0.08),
+                            Color.white.opacity(0.03)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+
+            RoundedRectangle(cornerRadius: 24)
+                .strokeBorder(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.6),
+                            Color.white.opacity(0.2),
+                            Color.white.opacity(0.1)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    lineWidth: 1.0
+                )
+        }
+        .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
     }
 
     // MARK: - Notification Overlay

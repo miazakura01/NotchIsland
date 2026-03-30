@@ -46,6 +46,8 @@ struct CompactTimerView: View {
 
     var body: some View {
         HStack(spacing: 6) {
+            Spacer(minLength: 0)
+
             Image(systemName: vm.state.mode == .timer ? "timer" : "stopwatch")
                 .font(.system(size: 12))
                 .foregroundColor(.orange)
@@ -53,6 +55,8 @@ struct CompactTimerView: View {
             Text(vm.state.displayTime)
                 .font(.system(size: 13, weight: .semibold, design: .monospaced))
                 .foregroundColor(.white)
+
+            Spacer(minLength: 0)
         }
     }
 }

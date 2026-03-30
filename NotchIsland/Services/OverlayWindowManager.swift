@@ -166,7 +166,7 @@ class OverlayWindowManager: ObservableObject {
 
         case .expanded:
             let width: CGFloat = 400
-            let height: CGFloat = 400 // 初回は大きめ、後でshrinkToFitで調整
+            let height: CGFloat = max(expandedHeight, 200)
             let topY: CGFloat
             if notchInfo.hasNotch {
                 topY = notchInfo.notchRect.origin.y - 4
@@ -199,10 +199,6 @@ class OverlayWindowManager: ObservableObject {
         case .compact:
             state = .expanded
             updatePanelFrameAnimated()
-            // SwiftUIレイアウト確定後にコンテンツに合わせて縮める
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-                self?.shrinkToFit()
-            }
         case .expanded:
             state = .compact
             updatePanelFrameAnimated()
