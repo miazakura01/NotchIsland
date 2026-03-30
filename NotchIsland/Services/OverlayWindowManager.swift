@@ -166,7 +166,7 @@ class OverlayWindowManager: ObservableObject {
 
         case .expanded:
             let width: CGFloat = 400
-            let height: CGFloat = 350 // 十分な高さを確保
+            let height: CGFloat = 400 // 初回は大きめ、後でshrinkToFitで調整
             let topY: CGFloat
             if notchInfo.hasNotch {
                 topY = notchInfo.notchRect.origin.y - 4
@@ -199,6 +199,10 @@ class OverlayWindowManager: ObservableObject {
         case .compact:
             state = .expanded
             updatePanelFrameAnimated()
+            // SwiftUIレイアウト確定後にコンテンツに合わせて縮める
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                self?.shrinkToFit()
+            }
         case .expanded:
             state = .compact
             updatePanelFrameAnimated()
@@ -246,6 +250,39 @@ class OverlayWindowManager: ObservableObject {
         }, completionHandler: {
             self.state = .hidden
         })
+    }
+
+    private func shrinkToFit() {
+        guard state == .expanded, let panel = panel, let hostingView = panel.contentView else { return }
+
+        let screen = notchInfo.screen
+        let screenFrame = screen.frame
+        let width: CGFloat = 400
+
+        // fittingSizeでコンテンツに合わせた高さを取得
+        let fitting = hostingView.fittingSize.height
+        let height = max(min(fitting + 10, 400), 180)
+
+        let topY: CGFloat
+        if notchInfo.hasNotch {
+            topY = notchInfo.notchRect.origin.y - 4
+        } else {
+            topY = screenFrame.maxY - screen.safeAreaTop - 4
+        }
+
+        let newFrame = CGRect(
+            x: screenFrame.midX - width / 2,
+            y: topY - height,
+            width: width,
+            height: height
+        )
+
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.2
+            context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            context.allowsImplicitAnimation = true
+            panel.animator().setFrame(newFrame, display: true)
+        }
     }
 
     func updatePanelFrameAnimated() {
