@@ -81,8 +81,10 @@ struct IslandContainerView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             currentTab = .nowPlaying
-                            windowManager.expandedHeight = 200
                             windowManager.toggleExpanded()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                windowManager.updatePanelFrameAnimated()
+                            }
                         }
                 case .expanded:
                     expandedContent
@@ -169,18 +171,13 @@ struct IslandContainerView: View {
         }
     }
 
-    private func heightForTab(_ tab: IslandTab) -> CGFloat {
-        switch tab {
-        case .weather: return 280
-        default: return 200
-        }
-    }
-
     private func tabButton(_ tab: IslandTab) -> some View {
         Button(action: {
             currentTab = tab
-            windowManager.expandedHeight = heightForTab(tab)
-            windowManager.updatePanelFrameAnimated()
+            // 少し遅延してコンテンツサイズ確定後にフレーム更新
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                windowManager.updatePanelFrameAnimated()
+            }
         }) {
             Text(tab.label)
                 .font(.system(size: 11, weight: currentTab == tab ? .semibold : .regular))

@@ -166,7 +166,15 @@ class OverlayWindowManager: ObservableObject {
 
         case .expanded:
             let width: CGFloat = 400
-            let height: CGFloat = expandedHeight
+            // コンテンツサイズから高さを自動計算
+            let contentHeight: CGFloat
+            if let hostingView = panel?.contentView {
+                let fittingSize = hostingView.fittingSize
+                contentHeight = max(fittingSize.height, 120)
+            } else {
+                contentHeight = expandedHeight
+            }
+            let height = min(contentHeight, 400) // 最大400px
             let topY: CGFloat
             if notchInfo.hasNotch {
                 topY = notchInfo.notchRect.origin.y - 4
