@@ -82,9 +82,6 @@ struct IslandContainerView: View {
                         .onTapGesture {
                             currentTab = .nowPlaying
                             windowManager.toggleExpanded()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                windowManager.updatePanelFrameAnimated()
-                            }
                         }
                 case .expanded:
                     expandedContent
@@ -174,10 +171,6 @@ struct IslandContainerView: View {
     private func tabButton(_ tab: IslandTab) -> some View {
         Button(action: {
             currentTab = tab
-            // 少し遅延してコンテンツサイズ確定後にフレーム更新
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                windowManager.updatePanelFrameAnimated()
-            }
         }) {
             Text(tab.label)
                 .font(.system(size: 11, weight: currentTab == tab ? .semibold : .regular))
