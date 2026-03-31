@@ -31,3 +31,13 @@ targets:
         CODE_SIGN_STYLE: Manual
         CODE_SIGN_IDENTITY: "Developer ID Application"
         DEVELOPMENT_TEAM: QF29DXX9K6
+    postBuildScripts:
+      - name: "Bundle MediaHelper"
+        script: |
+          # Copy framework
+          mkdir -p "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+          cp -R "${PROJECT_DIR}/MediaHelper/build/MediaHelper.framework" "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/"
+          codesign --force --sign "${EXPANDED_CODE_SIGN_IDENTITY}" "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MediaHelper.framework"
+          # Copy perl script
+          mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          cp "${PROJECT_DIR}/MediaHelper/bin/media-helper.pl" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"

@@ -187,6 +187,7 @@
 			buildPhases = (
 				AA966F3684CEAD4ECD02EC0D /* Sources */,
 				6699DF2CE096347DF16E4C2E /* Resources */,
+				D14C37AC474FDFC79681269A /* Bundle MediaHelper */,
 			);
 			buildRules = (
 			);
@@ -245,6 +246,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D14C37AC474FDFC79681269A /* Bundle MediaHelper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle MediaHelper";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copy framework\nmkdir -p \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\ncp -R \"${PROJECT_DIR}/MediaHelper/build/MediaHelper.framework\" \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/\"\ncodesign --force --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MediaHelper.framework\"\n# Copy perl script\nmkdir -p \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\ncp \"${PROJECT_DIR}/MediaHelper/bin/media-helper.pl\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA966F3684CEAD4ECD02EC0D /* Sources */ = {
