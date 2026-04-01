@@ -95,6 +95,16 @@ struct SettingsView: View {
                 }
             }
 
+            Section(L("settings.display.position")) {
+                HStack {
+                    Text(L("settings.display.verticalOffset"))
+                    Slider(value: $settingsManager.verticalOffset, in: -20...20, step: 1)
+                        .frame(width: 150)
+                    Text("\(Int(settingsManager.verticalOffset))px")
+                        .frame(width: 40)
+                }
+            }
+
             Section(L("settings.display.noNotch")) {
                 Toggle(L("settings.display.alwaysVisible"), isOn: $settingsManager.alwaysVisible)
                 Toggle(L("settings.display.deckMode"), isOn: $settingsManager.deckModeEnabled)
@@ -172,6 +182,7 @@ class SettingsManager: ObservableObject {
     @AppStorage("weatherLatitude") var weatherLatitude = ""
     @AppStorage("weatherLongitude") var weatherLongitude = ""
     @AppStorage("appLanguage") var appLanguage = ""
+    @AppStorage("verticalOffset") var verticalOffset: Double = 0
 
     func updateLoginItem(enabled: Bool) {
         if #available(macOS 13.0, *) {

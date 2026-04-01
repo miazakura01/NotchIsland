@@ -145,11 +145,12 @@ class OverlayWindowManager: ObservableObject {
 
         switch state {
         case .compact:
+            let yOffset = CGFloat(settingsManager.verticalOffset)
             if notchInfo.hasNotch {
                 let notch = notchInfo.notchRect
                 return CGRect(
                     x: notch.origin.x - 10,
-                    y: notch.origin.y - 4,
+                    y: notch.origin.y - 4 + yOffset,
                     width: notch.width + 20,
                     height: notch.height + 8
                 )
@@ -158,7 +159,7 @@ class OverlayWindowManager: ObservableObject {
                 let height: CGFloat = 36
                 return CGRect(
                     x: screenFrame.midX - width / 2,
-                    y: screenFrame.maxY - screen.safeAreaTop - height - 4,
+                    y: screenFrame.maxY - screen.safeAreaTop - height - 4 + yOffset,
                     width: width,
                     height: height
                 )
@@ -167,11 +168,12 @@ class OverlayWindowManager: ObservableObject {
         case .expanded:
             let width: CGFloat = 400
             let height: CGFloat = max(expandedHeight, 200)
+            let yOffset = CGFloat(settingsManager.verticalOffset)
             let topY: CGFloat
             if notchInfo.hasNotch {
-                topY = notchInfo.notchRect.origin.y - 4
+                topY = notchInfo.notchRect.origin.y - 4 + yOffset
             } else {
-                topY = screenFrame.maxY - screen.safeAreaTop - 4
+                topY = screenFrame.maxY - screen.safeAreaTop - 4 + yOffset
             }
             return CGRect(
                 x: screenFrame.midX - width / 2,
@@ -391,6 +393,7 @@ class OverlayWindowManager: ObservableObject {
     }
 
     private var settingsObserver: Any?
+    private var offsetDebounceTimer: Timer?
 
     private func observeSettings() {
         settingsObserver = NotificationCenter.default.addObserver(
@@ -398,7 +401,15 @@ class OverlayWindowManager: ObservableObject {
             object: nil,
             queue: .main
         ) { [weak self] (_: Notification) in
-            self?.handleDisplayModeChange()
+            guard let self = self else { return }
+            self.handleDisplayModeChange()
+            // デバウンスしてフレーム更新（無限ループ防止）
+            self.offsetDebounceTimer?.invalidate()
+            self.offsetDebounceTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { [weak self] _ in
+                guard let self = self, let panel = self.panel else { return }
+                let newFrame = self.calculateFrame(for: self.state)
+                panel.setFrame(newFrame, display: true)
+            }
         }
     }
 
