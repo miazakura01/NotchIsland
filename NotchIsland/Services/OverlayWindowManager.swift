@@ -393,6 +393,7 @@ class OverlayWindowManager: ObservableObject {
     }
 
     private var settingsObserver: Any?
+    private var offsetDebounceTimer: Timer?
 
     private func observeSettings() {
         settingsObserver = NotificationCenter.default.addObserver(
@@ -400,7 +401,15 @@ class OverlayWindowManager: ObservableObject {
             object: nil,
             queue: .main
         ) { [weak self] (_: Notification) in
-            self?.handleDisplayModeChange()
+            guard let self = self else { return }
+            self.handleDisplayModeChange()
+            // デバウンスしてフレーム更新（無限ループ防止）
+            self.offsetDebounceTimer?.invalidate()
+            self.offsetDebounceTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { [weak self] _ in
+                guard let self = self, let panel = self.panel else { return }
+                let newFrame = self.calculateFrame(for: self.state)
+                panel.setFrame(newFrame, display: true)
+            }
         }
     }
 
