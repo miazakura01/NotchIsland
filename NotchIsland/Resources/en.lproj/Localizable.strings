@@ -99,6 +99,8 @@
 "settings.display.deckMode" = "Deck Mode (appear on hover)";
 "settings.display.expandOnHover" = "Expand on hover";
 "settings.display.expandOnHoverDesc" = "Expand on hover: auto-expands when mouse enters";
+"settings.display.position" = "Position";
+"settings.display.verticalOffset" = "Vertical offset";
 
 /* Menu Bar */
 "menu.settings" = "Settings...";

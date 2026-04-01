@@ -99,6 +99,8 @@
 "settings.display.deckMode" = "Deckモード（ホバーで出現）";
 "settings.display.expandOnHover" = "ホバーで展開";
 "settings.display.expandOnHoverDesc" = "ホバーで展開: マウスを乗せると自動で展開します";
+"settings.display.position" = "位置調整";
+"settings.display.verticalOffset" = "縦位置オフセット";
 
 /* Menu Bar */
 "menu.settings" = "設定...";
